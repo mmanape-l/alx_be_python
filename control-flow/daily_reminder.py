@@ -3,19 +3,18 @@ task = input("Enter your task: ")
 priority = input("Priority (high/medium/low): ")
 time_bound = input("Is it time-bound? (yes/no): ")
 
-# Processing the task based on priority and time sensitivity
-print("\nReminder:")
+# Printing the initial reminder message format
+print(f"Reminder: '{task}' is a", end=" ")
 
-# Using match statement for priority
-match priority:
-    case "high":
-        print(f"'{task}' is a high priority task", end=" ")
-    case "medium":
-        print(f"'{task}' is a medium priority task", end=" ")
-    case "low":
-        print(f"'{task}' is a low priority task", end=" ")
-    case _:
-        print(f"'{task}' has an unknown priority", end=" ")
+# Handling the priority with if-elif statements
+if priority == "high":
+    print("high priority task", end=" ")
+elif priority == "medium":
+    print("medium priority task", end=" ")
+elif priority == "low":
+    print("low priority task", end=" ")
+else:
+    print("task with unknown priority", end=" ")
 
 # Handling time-bound tasks
 if time_bound == "yes":
