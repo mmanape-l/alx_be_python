@@ -1,30 +1,31 @@
+# test_simple_calculator.py
+
 import unittest
-from simple_calculator import SimpleCalculator
+import simple_calculator
 
 class TestSimpleCalculator(unittest.TestCase):
 
-    def setUp(self):
-        """Set up the SimpleCalculator instance before each test."""
-        self.calc = SimpleCalculator()
+    def test_add(self):
+        self.assertEqual(simple_calculator.add(1, 2), 3)
+        self.assertEqual(simple_calculator.add(-1, 1), 0)
+        self.assertEqual(simple_calculator.add(-1, -1), -2)
 
-    def test_addition(self):
-        """Test the addition method."""
-        self.assertEqual(self.calc.add(2, 3), 5)
-        self.assertEqual(self.calc.add(-1, 1), 0)
-        self.assertEqual(self.calc.add(-1, -1), -2)
-        self.assertEqual(self.calc.add(0, 0), 0)
-        self.assertEqual(self.calc.add(2.5, 3.5), 6.0)
+    def test_subtract(self):
+        self.assertEqual(simple_calculator.subtract(2, 1), 1)
+        self.assertEqual(simple_calculator.subtract(-1, 1), -2)
+        self.assertEqual(simple_calculator.subtract(-1, -1), 0)
 
-    def test_subtraction(self):
-        """Test the subtraction method."""
-        self.assertEqual(self.calc.subtract(5, 3), 2)
-        self.assertEqual(self.calc.subtract(-1, 1), -2)
-        self.assertEqual(self.calc.subtract(-1, -1), 0)
-        self.assertEqual(self.calc.subtract(0, 0), 0)
-        self.assertEqual(self.calc.subtract(3.5, 2.5), 1.0)
+    def test_multiply(self):
+        self.assertEqual(simple_calculator.multiply(2, 3), 6)
+        self.assertEqual(simple_calculator.multiply(-1, 1), -1)
+        self.assertEqual(simple_calculator.multiply(-1, -1), 1)
 
-    def test_multiplication(self):
-        """Test the multiplication method."""
-        self.assertEqual(self.calc.multiply(2, 3), 6)
-        self.assertEqual(self.calc.multiply(-1, 1), -1)
-        self.assertEqual
+    def test_divide(self):
+        self.assertEqual(simple_calculator.divide(6, 3), 2)
+        self.assertEqual(simple_calculator.divide(-1, 1), -1)
+        self.assertEqual(simple_calculator.divide(-1, -1), 1)
+        with self.assertRaises(ValueError):
+            simple_calculator.divide(1, 0)
+
+if __name__ == '__main__':
+    unittest.main()
